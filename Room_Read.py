@@ -14,7 +14,6 @@ roomId = sys.argv[1]
 # Capture SIGINT for cleanup when the script is aborted
 def end_read(signal, frame):
     global continue_reading
-    print "Ctrl+C captured, ending read."
     continue_reading = False
     GPIO.cleanup()
 
@@ -26,8 +25,7 @@ signal.signal(signal.SIGINT, end_read)
 MIFAREReader = MFRC522.MFRC522()
 
 # Welcome message
-print "Welcome to the MFRC522 data read example"
-print "Press Ctrl-C to stop."
+print "Welcome to Rigshospitalet RFID Tracking"
 
 # This loop keeps checking for chips. If one is near it will get the UID and authenticate
 while continue_reading:
@@ -62,7 +60,6 @@ while continue_reading:
         if status == MIFAREReader.MI_OK:
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
-            print 'RFID_Card' + cardId + ", Room_Id" + roomId
             r = requests.post('http://10.45.50.26:5011/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
             #print r.text()
         else:
