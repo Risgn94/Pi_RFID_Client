@@ -4,8 +4,11 @@
 import RPi.GPIO as GPIO
 import MFRC522
 import signal
+import requests
+import sys
 
 continue_reading = True
+roomId = sys.argv[0]
 
 
 # Capture SIGINT for cleanup when the script is aborted
@@ -43,7 +46,8 @@ while continue_reading:
     if status == MIFAREReader.MI_OK:
 
         # Print UID
-        print "Card read UID: " + str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
+        print "Card read UID: " + str(uid[0]) + "." + str(uid[1]) + "." + str(uid[2]) + "." + str(uid[3])
+        cardId = str(uid[0]) + "." + str(uid[1]) + "." + str(uid[2]) + "." + str(uid[3])
 
         # This is the default key for authentication
         key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
@@ -58,5 +62,7 @@ while continue_reading:
         if status == MIFAREReader.MI_OK:
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
+            print 'RFID_Card' + cardId + ", Room_Id" + roomId
+            r = requests.post('http://localhost:5011/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
         else:
             print "Authentication error"
