@@ -54,8 +54,6 @@
       <file leaf-file-name="Room_Read.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Room_Read.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="68" column="40" lean-forward="true" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
               <folding>
                 <element signature="e#46#69#0" expanded="true" />
               </folding>
@@ -428,8 +426,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Room_Read.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="68" column="40" lean-forward="true" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
           <folding>
             <element signature="e#46#69#0" expanded="true" />
           </folding>
