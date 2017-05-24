@@ -63,6 +63,6 @@ while continue_reading:
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
             print 'RFID_Card' + cardId + ", Room_Id" + roomId
-            r = requests.post('http://localhost:5011/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
+            r = requests.post('http://172.16.142.100:5011/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
         else:
             print "Authentication error"
