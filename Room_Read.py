@@ -8,7 +8,7 @@ import requests
 import sys
 
 continue_reading = True
-roomId = sys.argv[0]
+roomId = sys.argv[1]
 
 
 # Capture SIGINT for cleanup when the script is aborted
@@ -64,5 +64,6 @@ while continue_reading:
             MIFAREReader.MFRC522_StopCrypto1()
             print 'RFID_Card' + cardId + ", Room_Id" + roomId
             r = requests.post('http://172.16.142.100:5011/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
+            print r.text()
         else:
             print "Authentication error"
