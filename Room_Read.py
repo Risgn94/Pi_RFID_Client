@@ -60,7 +60,7 @@ while continue_reading:
         if status == MIFAREReader.MI_OK:
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
-            r = requests.post('http://46.101.128.191:5432//placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
+            r = requests.post('http://46.101.128.191:5432/placements/update', data={'RFID_Card': cardId, "Room_Id": roomId})
             #print r.text()
         else:
             print "Authentication error"
